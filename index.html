@@ -6,7 +6,7 @@
     <title>naufal-baihaqi — Full-Stack &amp; Backend Engineer</title>
     <meta
       name="description"
-      content="Muhammad Naufal Baihaqi — Full-stack &amp; backend developer (ReactJS, C# ASP.NET, Next.js) with a background in 3D/Unity, event production, and broadcast TV."
+      content="Muhammad Naufal Baihaqi — Full-stack &amp; backend developer (ReactJS, C# ASP.NET, Next.js) with experience in game development and 3D."
     />
     <link
       rel="icon"
@@ -19,10 +19,6 @@
       rel="stylesheet"
     />
     <style>
-      /* =========================================================
-   1. TOKENS — color, type, spacing. Change these to re-skin
-   the entire site without touching anything below.
-   ========================================================= */
       :root {
         --bg: #0e1729;
         --bg-raised: #15213a;
@@ -38,20 +34,14 @@
         --green-soft: rgba(73, 193, 137, 0.14);
         --amber: #e8b14f;
         --amber-soft: rgba(232, 177, 79, 0.14);
-
         --font-display: "Space Grotesk", "Segoe UI", sans-serif;
         --font-body: "Inter", "Segoe UI", sans-serif;
         --font-mono: "JetBrains Mono", "Consolas", monospace;
-
         --radius-sm: 6px;
         --radius: 10px;
         --radius-lg: 16px;
         --max: 1080px;
       }
-
-      /* =========================================================
-   2. RESET & BASE
-   ========================================================= */
       * {
         margin: 0;
         padding: 0;
@@ -92,7 +82,6 @@
         outline-offset: 3px;
         border-radius: 4px;
       }
-
       .section-inner,
       .nav-inner,
       .hero-inner {
@@ -101,8 +90,6 @@
         padding-left: 24px;
         padding-right: 24px;
       }
-
-      /* small reusable chip / dot used for status badges throughout */
       .chip {
         display: inline-flex;
         align-items: center;
@@ -142,9 +129,6 @@
         }
       }
 
-      /* =========================================================
-   3. NAV
-   ========================================================= */
       .nav {
         position: sticky;
         top: 0;
@@ -218,9 +202,6 @@
         display: block;
       }
 
-      /* =========================================================
-   4. HERO
-   ========================================================= */
       .hero {
         position: relative;
         overflow: hidden;
@@ -274,7 +255,6 @@
         gap: 14px;
         flex-wrap: wrap;
       }
-
       .btn {
         display: inline-flex;
         align-items: center;
@@ -316,7 +296,6 @@
         border-color: var(--gold);
       }
 
-      /* terminal signature element */
       .terminal {
         background: var(--bg-raised);
         border: 1px solid var(--line-strong);
@@ -387,9 +366,6 @@
         }
       }
 
-      /* =========================================================
-   5. SECTION SHELL
-   ========================================================= */
       .section {
         padding: 96px 0;
         border-bottom: 1px solid var(--line);
@@ -413,7 +389,6 @@
         margin-bottom: 56px;
         font-size: 15.5px;
       }
-
       .reveal {
         opacity: 0;
         transform: translateY(18px);
@@ -426,9 +401,6 @@
         transform: translateY(0);
       }
 
-      /* =========================================================
-   6. CHANGELOG
-   ========================================================= */
       .log {
         display: flex;
         flex-direction: column;
@@ -504,13 +476,7 @@
       .log-link:hover {
         border-color: var(--gold);
       }
-      .arrow {
-        font-size: 14px;
-      }
 
-      /* =========================================================
-   7. STACK
-   ========================================================= */
       .stack-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -549,9 +515,6 @@
         border-radius: 6px;
       }
 
-      /* =========================================================
-   8. SPECS
-   ========================================================= */
       .spec-sheet {
         background: var(--bg-raised);
         border: 1px solid var(--line);
@@ -597,9 +560,6 @@
         margin-bottom: 0;
       }
 
-      /* =========================================================
-   9. DEPLOY / CONTACT
-   ========================================================= */
       .deploy-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -638,9 +598,6 @@
         word-break: break-word;
       }
 
-      /* =========================================================
-   10. FOOTER
-   ========================================================= */
       .footer {
         padding: 32px 24px;
         text-align: center;
@@ -652,9 +609,6 @@
         color: var(--gold);
       }
 
-      /* =========================================================
-   11. RESPONSIVE
-   ========================================================= */
       @media (max-width: 860px) {
         .hero-inner {
           grid-template-columns: 1fr;
@@ -708,10 +662,6 @@
           text-align: left;
         }
       }
-
-      /* =========================================================
-   12. ACCESSIBILITY — respect reduced motion preference
-   ========================================================= */
       @media (prefers-reduced-motion: reduce) {
         * {
           animation: none !important;
@@ -726,7 +676,6 @@
     </style>
   </head>
   <body>
-    <!-- ============ NAV ============ -->
     <header class="nav" id="nav">
       <div class="nav-inner">
         <a href="#hero" class="nav-logo">
@@ -734,7 +683,7 @@
           <span class="nav-logo-version">v2026.06</span>
         </a>
         <nav class="nav-links" id="navLinks">
-          <a href="#changelog" data-nav>changelog</a>
+          <a href="#experience" data-nav>experience</a>
           <a href="#stack" data-nav>stack</a>
           <a href="#specs" data-nav>specs</a>
           <a href="#deploy" data-nav>deploy</a>
@@ -746,7 +695,7 @@
     </header>
 
     <main>
-      <!-- ============ HERO ============ -->
+      <!-- HERO -->
       <section id="hero" class="hero">
         <div class="hero-grid-bg" aria-hidden="true"></div>
         <div class="hero-inner">
@@ -755,13 +704,14 @@
               <span class="dot dot-amber"></span> actively building &middot; Jakarta, ID
             </div>
             <h1 class="hero-title">Muhammad Naufal<br />Baihaqi</h1>
+            <!-- CHANGED: removed "Production Ops" from role -->
             <p class="hero-role">
               Full-Stack &amp; Backend Engineer <span class="hero-role-divider">/</span> Unity &amp; 3D
-              <span class="hero-role-divider">/</span> Production Ops
             </p>
+            <!-- CHANGED: removed "live events" and "broadcast television", focused on code -->
             <p class="hero-desc">
-              A fast-paced builder shipped across <strong>code</strong>, <strong>live events</strong>, and
-              <strong>broadcast television</strong> — engineered for integrity, adaptability, and hard work, running
+              A fast-paced builder shipped across <strong>fullstack C# .NET</strong>, <strong>backend systems</strong>,
+              and <strong>game development</strong> — engineered for integrity, adaptability, and hard work, running
               solo or as part of a team.
             </p>
             <div class="hero-cta">
@@ -785,11 +735,11 @@
         </div>
       </section>
 
-      <!-- ============ CHANGELOG (work experience) ============ -->
-      <section id="changelog" class="section">
+      <!-- experience -->
+      <section id="experience" class="section">
         <div class="section-inner">
           <p class="section-eyebrow">// work experience</p>
-          <h2 class="section-title">Changelog</h2>
+          <h2 class="section-title">Work Experience</h2>
           <p class="section-lead">
             Every role shipped, in order. Each entry reads like a release: what changed, and what it took to ship it.
           </p>
@@ -807,7 +757,7 @@
                 </div>
                 <ul class="diff">
                   <li>
-                    <span class="diff-add">+</span> Developed a full-stack website using <strong>ReactJS</strong> on the
+                    <span class="diff-add">+</span> Developed a full-stack website using <strong>NextJs</strong> on the
                     frontend and <strong>C# ASP.NET</strong> on the backend
                   </li>
                 </ul>
@@ -863,6 +813,7 @@
               </div>
             </article>
 
+            <!-- iNews TV: kept as job experience, removed TV/broadcast descriptions -->
             <article class="log-entry reveal">
               <div class="log-meta">
                 <span class="log-version">v2021.0</span>
@@ -874,14 +825,11 @@
                   <span class="chip chip-status"><span class="dot dot-green"></span> shipped</span>
                 </div>
                 <ul class="diff">
-                  <li><span class="diff-add">+</span> Produced the program bumper for "Ngobrol Bareng Gus Miftah"</li>
-                  <li><span class="diff-add">+</span> Produced segments for "Pedes Eundes"</li>
-                  <li>
-                    <span class="diff-add">+</span> Supported broadcast coverage of the HSBC BWF World Tour 2022,
-                    Bangkok
-                  </li>
-                  <li><span class="diff-add">+</span> Contributed to iNews Sports programming</li>
-                  <li><span class="diff-add">+</span> Contributed to Wirausaha Muda Mandiri programming</li>
+                  <li><span class="diff-add">+</span> Program Bumper Ngobrol Bareng Gus Miftah</li>
+                  <li><span class="diff-add">+</span> Program Pedes Eundes</li>
+                  <li><span class="diff-add">+</span> Program HSBC BWF World Tour 2022 Bangkok Thailand</li>
+                  <li><span class="diff-add">+</span> Program iNews Sports</li>
+                  <li><span class="diff-add">+</span> Program Wirausaha Muda Mandiri</li>
                 </ul>
               </div>
             </article>
@@ -889,7 +837,7 @@
         </div>
       </section>
 
-      <!-- ============ STACK (skills) ============ -->
+      <!-- STACK -->
       <section id="stack" class="section section-alt">
         <div class="section-inner">
           <p class="section-eyebrow">// skills &amp; tooling</p>
@@ -907,7 +855,6 @@
                 <span class="tag">MySQL</span>
               </div>
             </div>
-
             <div class="stack-card reveal">
               <p class="stack-path">/stack/game-3d</p>
               <div class="tag-list">
@@ -916,7 +863,6 @@
                 <span class="tag">Blender 3D</span>
               </div>
             </div>
-
             <div class="stack-card reveal">
               <p class="stack-path">/stack/tools</p>
               <div class="tag-list">
@@ -930,7 +876,7 @@
         </div>
       </section>
 
-      <!-- ============ SPECS (education) ============ -->
+      <!-- SPECS -->
       <section id="specs" class="section">
         <div class="section-inner">
           <p class="section-eyebrow">// education</p>
@@ -976,13 +922,13 @@
         </div>
       </section>
 
-      <!-- ============ DEPLOY (contact) ============ -->
+      <!-- DEPLOY -->
       <section id="deploy" class="section section-deploy">
         <div class="section-inner">
           <p class="section-eyebrow">// get in touch</p>
           <h2 class="section-title">Ready to deploy?</h2>
           <p class="section-lead">
-            Open to backend, full-stack, or production-ops roles. Reach out through any channel below.
+            Open to backend, full-stack, or game dev roles. Reach out through any channel below.
           </p>
 
           <div class="deploy-grid">
@@ -1015,18 +961,15 @@
               <span class="deploy-label">x / twitter</span>
               <span class="deploy-value">@itsmenopalbah</span>
             </a>
-            <a
-              class="deploy-card reveal"
-              href="https://onhaus-studio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <!-- CHANGED: onhaus-studio → GitHub -->
+            <a class="deploy-card reveal" href="https://github.com/nopalbahq" target="_blank" rel="noopener noreferrer">
               <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                />
               </svg>
-              <span class="deploy-label">studio site</span>
-              <span class="deploy-value">onhaus-studio.vercel.app</span>
+              <span class="deploy-label">github</span>
+              <span class="deploy-value">github.com/nopalbahq</span>
             </a>
             <a class="deploy-card reveal" href="https://bit.ly/Nop-Porto" target="_blank" rel="noopener noreferrer">
               <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -1056,10 +999,8 @@
     <script>
       (function () {
         "use strict";
-
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        /* ---------- 1. Mobile nav toggle ---------- */
         var navToggle = document.getElementById("navToggle");
         var navLinks = document.getElementById("navLinks");
         navToggle.addEventListener("click", function () {
@@ -1072,7 +1013,6 @@
           });
         });
 
-        /* ---------- 2. Scroll-spy: highlight active nav link ---------- */
         var sections = document.querySelectorAll("main section[id]");
         var navAnchors = document.querySelectorAll("[data-nav]");
         var spyObserver = new IntersectionObserver(
@@ -1091,7 +1031,6 @@
           spyObserver.observe(s);
         });
 
-        /* ---------- 3. Reveal-on-scroll for cards/entries ---------- */
         var revealEls = document.querySelectorAll(".reveal");
         if (reduceMotion) {
           revealEls.forEach(function (el) {
@@ -1114,17 +1053,15 @@
           });
         }
 
-        /* ---------- 4. Terminal type-on-load sequence (the signature moment) ---------- */
         var terminalBody = document.getElementById("terminalBody");
+        // CHANGED: removed "events & broadcast" from uptime line
         var script = [
           { type: "prompt", text: "whoami" },
-          { type: "out", text: "naufal-baihaqi" },
+          { type: "out", text: "muhammad-naufal-baihaqi" },
           { type: "prompt", text: "status" },
           { type: "status", text: "● actively building — Jakarta, ID" },
           { type: "prompt", text: "stack --top" },
           { type: "out", text: "react · asp.net · unity · tailwind · mysql" },
-          { type: "prompt", text: "uptime" },
-          { type: "out", text: "5+ years across dev, events &amp; broadcast" },
         ];
 
         function renderStatic() {
@@ -1187,11 +1124,6 @@
         } else {
           typeSequence();
         }
-
-        /* ---------- 5. Footer year (kept dynamic for future-proofing) ---------- */
-        // Footer currently uses a static version tag (v2026.06) to match the
-        // hero badge. If you redeploy later, bump both together by hand so the
-        // "version" story stays consistent across the page.
       })();
     </script>
   </body>
