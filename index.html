@@ -1,0 +1,1198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>naufal-baihaqi — Full-Stack &amp; Backend Engineer</title>
+    <meta
+      name="description"
+      content="Muhammad Naufal Baihaqi — Full-stack &amp; backend developer (ReactJS, C# ASP.NET, Next.js) with a background in 3D/Unity, event production, and broadcast TV."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E1729'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' fill='%23C99B3F' text-anchor='middle'%3ENB%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =========================================================
+   1. TOKENS — color, type, spacing. Change these to re-skin
+   the entire site without touching anything below.
+   ========================================================= */
+      :root {
+        --bg: #0e1729;
+        --bg-raised: #15213a;
+        --bg-raised-2: #1b2a47;
+        --line: rgba(232, 236, 244, 0.09);
+        --line-strong: rgba(232, 236, 244, 0.16);
+        --text: #eceff6;
+        --text-muted: #98a4bd;
+        --text-dim: #5e6c87;
+        --gold: #d3a24f;
+        --gold-soft: rgba(211, 162, 79, 0.14);
+        --green: #49c189;
+        --green-soft: rgba(73, 193, 137, 0.14);
+        --amber: #e8b14f;
+        --amber-soft: rgba(232, 177, 79, 0.14);
+
+        --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+        --font-body: "Inter", "Segoe UI", sans-serif;
+        --font-mono: "JetBrains Mono", "Consolas", monospace;
+
+        --radius-sm: 6px;
+        --radius: 10px;
+        --radius-lg: 16px;
+        --max: 1080px;
+      }
+
+      /* =========================================================
+   2. RESET & BASE
+   ========================================================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        line-height: 1.15;
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .section-inner,
+      .nav-inner,
+      .hero-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      /* small reusable chip / dot used for status badges throughout */
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        color: var(--text-muted);
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        padding: 6px 12px;
+        border-radius: 999px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .dot-amber {
+        background: var(--amber);
+        box-shadow: 0 0 0 0 var(--amber-soft);
+        animation: pulse 2.2s infinite;
+      }
+      .dot-green {
+        background: var(--green);
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 var(--amber-soft);
+        }
+        70% {
+          box-shadow: 0 0 0 6px transparent;
+        }
+        100% {
+          box-shadow: 0 0 0 0 transparent;
+        }
+      }
+
+      /* =========================================================
+   3. NAV
+   ========================================================= */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(14, 23, 41, 0.85);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-family: var(--font-mono);
+      }
+      .nav-logo-name {
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .nav-logo-version {
+        font-size: 11px;
+        color: var(--gold);
+        border: 1px solid var(--gold-soft);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+      .nav-links a {
+        color: var(--text-muted);
+        position: relative;
+        padding: 4px 0;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--text);
+      }
+      .nav-links a.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background: var(--gold);
+      }
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .nav-toggle span {
+        width: 20px;
+        height: 2px;
+        background: var(--text);
+        display: block;
+      }
+
+      /* =========================================================
+   4. HERO
+   ========================================================= */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 96px 0 80px;
+      }
+      .hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.5;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: radial-gradient(ellipse 60% 60% at 50% 20%, black 0%, transparent 75%);
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .hero-title {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        margin: 18px 0 10px;
+        letter-spacing: -0.01em;
+      }
+      .hero-role {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--gold);
+        margin-bottom: 18px;
+      }
+      .hero-role-divider {
+        color: var(--text-dim);
+        margin: 0 6px;
+      }
+      .hero-desc {
+        color: var(--text-muted);
+        max-width: 480px;
+        margin-bottom: 32px;
+        font-size: 15.5px;
+      }
+      .hero-desc strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+        font-weight: 500;
+        padding: 13px 20px;
+        border-radius: var(--radius-sm);
+        border: 1px solid transparent;
+        transition:
+          transform 0.15s,
+          border-color 0.15s,
+          background 0.15s;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn-prompt {
+        color: var(--gold);
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: #1a1305;
+      }
+      .btn-primary .btn-prompt {
+        color: #1a1305;
+        opacity: 0.6;
+      }
+      .btn-primary:hover {
+        background: #e0ae5c;
+      }
+      .btn-secondary {
+        background: var(--bg-raised);
+        border-color: var(--line-strong);
+        color: var(--text);
+      }
+      .btn-secondary:hover {
+        border-color: var(--gold);
+      }
+
+      /* terminal signature element */
+      .terminal {
+        background: var(--bg-raised);
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+      }
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: var(--bg-raised-2);
+        border-bottom: 1px solid var(--line);
+      }
+      .terminal-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+      }
+      .terminal-dot-r {
+        background: #e5635a;
+      }
+      .terminal-dot-y {
+        background: #e8b14f;
+      }
+      .terminal-dot-g {
+        background: #49c189;
+      }
+      .terminal-title {
+        margin-left: 8px;
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--text-dim);
+      }
+      .terminal-body {
+        padding: 20px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.85;
+        min-height: 220px;
+        white-space: pre-wrap;
+      }
+      .t-line {
+        color: var(--text-muted);
+      }
+      .t-prompt {
+        color: var(--gold);
+      }
+      .t-out {
+        color: var(--text);
+      }
+      .t-status {
+        color: var(--green);
+      }
+      .cursor {
+        display: inline-block;
+        width: 7px;
+        height: 14px;
+        background: var(--gold);
+        margin-left: 2px;
+        vertical-align: -2px;
+        animation: blink 1s steps(1) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* =========================================================
+   5. SECTION SHELL
+   ========================================================= */
+      .section {
+        padding: 96px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .section-alt {
+        background: rgba(255, 255, 255, 0.012);
+      }
+      .section-eyebrow {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        color: var(--text-dim);
+        margin-bottom: 10px;
+      }
+      .section-title {
+        font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+        margin-bottom: 14px;
+      }
+      .section-lead {
+        color: var(--text-muted);
+        max-width: 540px;
+        margin-bottom: 56px;
+        font-size: 15.5px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* =========================================================
+   6. CHANGELOG
+   ========================================================= */
+      .log {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border-top: 1px solid var(--line);
+      }
+      .log-entry {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 32px;
+        padding: 32px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .log-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .log-version {
+        font-family: var(--font-mono);
+        color: var(--gold);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .log-date {
+        font-family: var(--font-mono);
+        color: var(--text-dim);
+        font-size: 12.5px;
+      }
+      .log-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+      }
+      .log-head h3 {
+        font-size: 18px;
+      }
+      .log-role {
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      .diff {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 14px 0 4px;
+      }
+      .diff li {
+        font-size: 14.5px;
+        color: var(--text-muted);
+        padding-left: 4px;
+      }
+      .diff-add {
+        color: var(--green);
+        font-family: var(--font-mono);
+        margin-right: 8px;
+      }
+      .log-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 14px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--gold);
+        border-bottom: 1px solid transparent;
+      }
+      .log-link:hover {
+        border-color: var(--gold);
+      }
+      .arrow {
+        font-size: 14px;
+      }
+
+      /* =========================================================
+   7. STACK
+   ========================================================= */
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .stack-card {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 24px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .stack-card:hover {
+        border-color: var(--line-strong);
+        transform: translateY(-3px);
+      }
+      .stack-path {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        color: var(--gold);
+        margin-bottom: 18px;
+      }
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        font-size: 13px;
+        color: var(--text-muted);
+        background: var(--bg-raised-2);
+        border: 1px solid var(--line);
+        padding: 6px 11px;
+        border-radius: 6px;
+      }
+
+      /* =========================================================
+   8. SPECS
+   ========================================================= */
+      .spec-sheet {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 8px 28px;
+        margin-bottom: 24px;
+      }
+      .spec-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .spec-sheet .spec-row:last-of-type {
+        border-bottom: none;
+      }
+      .spec-label {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding-top: 2px;
+      }
+      .spec-value {
+        font-size: 15px;
+        text-align: right;
+      }
+      .spec-muted {
+        color: var(--text-muted);
+        font-size: 13px;
+      }
+      .spec-notes {
+        padding: 18px 0 14px;
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+      .spec-notes p {
+        margin-bottom: 10px;
+      }
+      .spec-notes p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* =========================================================
+   9. DEPLOY / CONTACT
+   ========================================================= */
+      .deploy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .deploy-card {
+        background: var(--bg-raised);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .deploy-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-3px);
+      }
+      .deploy-icon {
+        width: 20px;
+        height: 20px;
+        color: var(--gold);
+      }
+      .deploy-label {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .deploy-value {
+        font-size: 14.5px;
+        word-break: break-word;
+      }
+
+      /* =========================================================
+   10. FOOTER
+   ========================================================= */
+      .footer {
+        padding: 32px 24px;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        color: var(--text-dim);
+      }
+      .footer-version {
+        color: var(--gold);
+      }
+
+      /* =========================================================
+   11. RESPONSIVE
+   ========================================================= */
+      @media (max-width: 860px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .stack-grid {
+          grid-template-columns: 1fr;
+        }
+        .deploy-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .log-entry {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+      @media (max-width: 620px) {
+        .nav-links {
+          position: absolute;
+          top: 64px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          gap: 0;
+          background: var(--bg);
+          border-bottom: 1px solid var(--line);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.25s ease;
+        }
+        .nav-links.open {
+          max-height: 240px;
+        }
+        .nav-links a {
+          padding: 16px 24px;
+          border-bottom: 1px solid var(--line);
+        }
+        .nav-toggle {
+          display: flex;
+        }
+        .deploy-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 64px 0 56px;
+        }
+        .spec-row {
+          flex-direction: column;
+          gap: 4px;
+        }
+        .spec-value {
+          text-align: left;
+        }
+      }
+
+      /* =========================================================
+   12. ACCESSIBILITY — respect reduced motion preference
+   ========================================================= */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ NAV ============ -->
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-name">naufal-baihaqi</span>
+          <span class="nav-logo-version">v2026.06</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="#changelog" data-nav>changelog</a>
+          <a href="#stack" data-nav>stack</a>
+          <a href="#specs" data-nav>specs</a>
+          <a href="#deploy" data-nav>deploy</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============ HERO ============ -->
+      <section id="hero" class="hero">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="chip chip-status">
+              <span class="dot dot-amber"></span> actively building &middot; Jakarta, ID
+            </div>
+            <h1 class="hero-title">Muhammad Naufal<br />Baihaqi</h1>
+            <p class="hero-role">
+              Full-Stack &amp; Backend Engineer <span class="hero-role-divider">/</span> Unity &amp; 3D
+              <span class="hero-role-divider">/</span> Production Ops
+            </p>
+            <p class="hero-desc">
+              A fast-paced builder shipped across <strong>code</strong>, <strong>live events</strong>, and
+              <strong>broadcast television</strong> — engineered for integrity, adaptability, and hard work, running
+              solo or as part of a team.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="mailto:naufalbaihaqipro@gmail.com">
+                <span class="btn-prompt">$</span> contact --email
+              </a>
+              <a class="btn btn-secondary" href="./Muhammad-Naufal-Baihaqi-CV.pdf" download>
+                <span class="btn-prompt">$</span> download --cv
+              </a>
+            </div>
+          </div>
+          <div class="terminal" id="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot terminal-dot-r"></span>
+              <span class="terminal-dot terminal-dot-y"></span>
+              <span class="terminal-dot terminal-dot-g"></span>
+              <span class="terminal-title">naufal@portfolio:~</span>
+            </div>
+            <div class="terminal-body" id="terminalBody"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CHANGELOG (work experience) ============ -->
+      <section id="changelog" class="section">
+        <div class="section-inner">
+          <p class="section-eyebrow">// work experience</p>
+          <h2 class="section-title">Changelog</h2>
+          <p class="section-lead">
+            Every role shipped, in order. Each entry reads like a release: what changed, and what it took to ship it.
+          </p>
+
+          <div class="log">
+            <article class="log-entry reveal">
+              <div class="log-meta">
+                <span class="log-version">v2026.0</span>
+                <span class="log-date">2026 — present</span>
+              </div>
+              <div class="log-content">
+                <div class="log-head">
+                  <h3>Forum Kerukunan Umat Beragama, Jakarta Barat</h3>
+                  <span class="chip chip-status"><span class="dot dot-amber"></span> in progress</span>
+                </div>
+                <ul class="diff">
+                  <li>
+                    <span class="diff-add">+</span> Developed a full-stack website using <strong>ReactJS</strong> on the
+                    frontend and <strong>C# ASP.NET</strong> on the backend
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="log-entry reveal">
+              <div class="log-meta">
+                <span class="log-version">v2025.0</span>
+                <span class="log-date">2025</span>
+              </div>
+              <div class="log-content">
+                <div class="log-head">
+                  <h3>PT. Pantja Artha Niaga</h3>
+                  <span class="chip chip-status"><span class="dot dot-green"></span> shipped</span>
+                </div>
+                <p class="log-role">Backend Web Developer</p>
+                <ul class="diff">
+                  <li><span class="diff-add">+</span> Built the API server powering internal company data</li>
+                  <li>
+                    <span class="diff-add">+</span> Implemented the full layer stack — Route → Controller → DTO →
+                    Service → Model → Database
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="log-entry reveal">
+              <div class="log-meta">
+                <span class="log-version">v2023.1</span>
+                <span class="log-date">2023 — 2024</span>
+              </div>
+              <div class="log-content">
+                <div class="log-head">
+                  <h3>KONI — Komite Olahraga Nasional Indonesia</h3>
+                  <span class="chip chip-status"><span class="dot dot-green"></span> shipped</span>
+                </div>
+                <ul class="diff">
+                  <li>
+                    <span class="diff-add">+</span> Scheduled the Sports Coaches Quality Improvement Training program
+                  </li>
+                  <li><span class="diff-add">+</span> Prepared and organized training materials for the program</li>
+                  <li><span class="diff-add">+</span> Compiled the post-event report for the training program</li>
+                  <li>
+                    <span class="diff-add">+</span> Drafted the championship proposal for the Indonesia Woodball
+                    Association, West Jakarta
+                  </li>
+                  <li>
+                    <span class="diff-add">+</span> Drafted the JBJL (Jakarta Barat Junior League) 2024 proposal for
+                    PSSI
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="log-entry reveal">
+              <div class="log-meta">
+                <span class="log-version">v2021.0</span>
+                <span class="log-date">2021 — 2022</span>
+              </div>
+              <div class="log-content">
+                <div class="log-head">
+                  <h3>iNews TV</h3>
+                  <span class="chip chip-status"><span class="dot dot-green"></span> shipped</span>
+                </div>
+                <ul class="diff">
+                  <li><span class="diff-add">+</span> Produced the program bumper for "Ngobrol Bareng Gus Miftah"</li>
+                  <li><span class="diff-add">+</span> Produced segments for "Pedes Eundes"</li>
+                  <li>
+                    <span class="diff-add">+</span> Supported broadcast coverage of the HSBC BWF World Tour 2022,
+                    Bangkok
+                  </li>
+                  <li><span class="diff-add">+</span> Contributed to iNews Sports programming</li>
+                  <li><span class="diff-add">+</span> Contributed to Wirausaha Muda Mandiri programming</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ STACK (skills) ============ -->
+      <section id="stack" class="section section-alt">
+        <div class="section-inner">
+          <p class="section-eyebrow">// skills &amp; tooling</p>
+          <h2 class="section-title">Stack</h2>
+          <p class="section-lead">What gets installed before anything ships.</p>
+
+          <div class="stack-grid">
+            <div class="stack-card reveal">
+              <p class="stack-path">/stack/web-backend</p>
+              <div class="tag-list">
+                <span class="tag">C# ASP.NET</span>
+                <span class="tag">ReactJs</span>
+                <span class="tag">Next.Js</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </div>
+
+            <div class="stack-card reveal">
+              <p class="stack-path">/stack/game-3d</p>
+              <div class="tag-list">
+                <span class="tag">C# Unity</span>
+                <span class="tag">Unity 6</span>
+                <span class="tag">Blender 3D</span>
+              </div>
+            </div>
+
+            <div class="stack-card reveal">
+              <p class="stack-path">/stack/tools</p>
+              <div class="tag-list">
+                <span class="tag">Visual Studio Code</span>
+                <span class="tag">Postman</span>
+                <span class="tag">Figma</span>
+                <span class="tag">Adobe XD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SPECS (education) ============ -->
+      <section id="specs" class="section">
+        <div class="section-inner">
+          <p class="section-eyebrow">// education</p>
+          <h2 class="section-title">Specifications</h2>
+          <p class="section-lead">The build requirements behind everything above.</p>
+
+          <div class="spec-sheet reveal">
+            <div class="spec-row">
+              <span class="spec-label">institution</span>
+              <span class="spec-value">University Esa Unggul</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">program</span>
+              <span class="spec-value">Bachelor of Informatics Engineering</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">gpa</span>
+              <span class="spec-value">3.23 <span class="spec-muted">/ 4.00</span></span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">graduated</span>
+              <span class="spec-value">2020</span>
+            </div>
+            <div class="spec-notes">
+              <p>
+                First-year coursework covered Android development (Java &amp; Kotlin) and web development (CSS, MySQL,
+                MongoDB, Firebase), alongside product concepting in Figma and Adobe XD.
+              </p>
+              <p>Final thesis: a mobile HIIT-workout application concept.</p>
+            </div>
+          </div>
+
+          <div class="spec-sheet reveal">
+            <div class="spec-row">
+              <span class="spec-label">institution</span>
+              <span class="spec-value">SMAN 65 Jakarta</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">graduated</span>
+              <span class="spec-value">2016</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DEPLOY (contact) ============ -->
+      <section id="deploy" class="section section-deploy">
+        <div class="section-inner">
+          <p class="section-eyebrow">// get in touch</p>
+          <h2 class="section-title">Ready to deploy?</h2>
+          <p class="section-lead">
+            Open to backend, full-stack, or production-ops roles. Reach out through any channel below.
+          </p>
+
+          <div class="deploy-grid">
+            <a class="deploy-card reveal" href="mailto:naufalbaihaqipro@gmail.com">
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+              <span class="deploy-label">email</span>
+              <span class="deploy-value">naufalbaihaqipro@gmail.com</span>
+            </a>
+            <a class="deploy-card reveal" href="https://wa.me/628999077780" target="_blank" rel="noopener noreferrer">
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.33 1.88.6 2.78a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.27 1.83.47 2.78.6A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              <span class="deploy-label">phone / whatsapp</span>
+              <span class="deploy-value">+62 8999 077 780</span>
+            </a>
+            <a
+              class="deploy-card reveal"
+              href="https://twitter.com/itsmenopalbah"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 4l16 16M20 4L4 20" />
+              </svg>
+              <span class="deploy-label">x / twitter</span>
+              <span class="deploy-value">@itsmenopalbah</span>
+            </a>
+            <a
+              class="deploy-card reveal"
+              href="https://onhaus-studio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" />
+              </svg>
+              <span class="deploy-label">studio site</span>
+              <span class="deploy-value">onhaus-studio.vercel.app</span>
+            </a>
+            <a class="deploy-card reveal" href="https://bit.ly/Nop-Porto" target="_blank" rel="noopener noreferrer">
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M10 13a5 5 0 0 0 7.07 0l2-2a5 5 0 0 0-7.07-7.07l-1 1" />
+                <path d="M14 11a5 5 0 0 0-7.07 0l-2 2a5 5 0 0 0 7.07 7.07l1-1" />
+              </svg>
+              <span class="deploy-label">full portfolio</span>
+              <span class="deploy-value">bit.ly/Nop-Porto</span>
+            </a>
+            <a class="deploy-card reveal" href="./Muhammad-Naufal-Baihaqi-CV.pdf" download>
+              <svg class="deploy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4" />
+                <path d="M5 21h14" />
+              </svg>
+              <span class="deploy-label">resume</span>
+              <span class="deploy-value">download .pdf</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>naufal-baihaqi <span class="footer-version">v2026.06</span> — built &amp; deployed, status: live.</p>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- 1. Mobile nav toggle ---------- */
+        var navToggle = document.getElementById("navToggle");
+        var navLinks = document.getElementById("navLinks");
+        navToggle.addEventListener("click", function () {
+          var isOpen = navLinks.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+        navLinks.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            navLinks.classList.remove("open");
+          });
+        });
+
+        /* ---------- 2. Scroll-spy: highlight active nav link ---------- */
+        var sections = document.querySelectorAll("main section[id]");
+        var navAnchors = document.querySelectorAll("[data-nav]");
+        var spyObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                navAnchors.forEach(function (a) {
+                  a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id);
+                });
+              }
+            });
+          },
+          { rootMargin: "-45% 0px -50% 0px" },
+        );
+        sections.forEach(function (s) {
+          spyObserver.observe(s);
+        });
+
+        /* ---------- 3. Reveal-on-scroll for cards/entries ---------- */
+        var revealEls = document.querySelectorAll(".reveal");
+        if (reduceMotion) {
+          revealEls.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+        } else {
+          var revealObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  revealObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+          revealEls.forEach(function (el) {
+            revealObserver.observe(el);
+          });
+        }
+
+        /* ---------- 4. Terminal type-on-load sequence (the signature moment) ---------- */
+        var terminalBody = document.getElementById("terminalBody");
+        var script = [
+          { type: "prompt", text: "whoami" },
+          { type: "out", text: "naufal-baihaqi" },
+          { type: "prompt", text: "status" },
+          { type: "status", text: "● actively building — Jakarta, ID" },
+          { type: "prompt", text: "stack --top" },
+          { type: "out", text: "react · asp.net · unity · tailwind · mysql" },
+          { type: "prompt", text: "uptime" },
+          { type: "out", text: "5+ years across dev, events &amp; broadcast" },
+        ];
+
+        function renderStatic() {
+          var html = "";
+          script.forEach(function (line) {
+            if (line.type === "prompt") {
+              html += '<div class="t-line"><span class="t-prompt">$</span> ' + line.text + "</div>";
+            } else if (line.type === "status") {
+              html += '<div class="t-line t-status">' + line.text + "</div><br/>";
+            } else {
+              html += '<div class="t-line t-out">' + line.text + "</div><br/>";
+            }
+          });
+          html += '<div class="t-line"><span class="t-prompt">$</span> <span class="cursor"></span></div>';
+          terminalBody.innerHTML = html;
+        }
+
+        function typeSequence() {
+          var i = 0;
+          function next() {
+            if (i >= script.length) {
+              terminalBody.insertAdjacentHTML(
+                "beforeend",
+                '<div class="t-line"><span class="t-prompt">$</span> <span class="cursor"></span></div>',
+              );
+              return;
+            }
+            var line = script[i];
+            var rowClass = line.type === "status" ? "t-line t-status" : line.type === "out" ? "t-line t-out" : "t-line";
+            var row = document.createElement("div");
+            row.className = rowClass;
+            if (line.type === "prompt") {
+              row.innerHTML = '<span class="t-prompt">$</span> <span class="typed"></span><span class="cursor"></span>';
+            } else {
+              row.innerHTML = '<span class="typed"></span>';
+            }
+            terminalBody.appendChild(row);
+            var typedSpan = row.querySelector(".typed");
+            var cursorSpan = row.querySelector(".cursor");
+            var chars = line.text.split("");
+            var c = 0;
+            var speed = line.type === "prompt" ? 38 : 16;
+            (function typeChar() {
+              if (c < chars.length) {
+                typedSpan.textContent += chars[c];
+                c++;
+                setTimeout(typeChar, speed);
+              } else {
+                if (cursorSpan) cursorSpan.remove();
+                i++;
+                setTimeout(next, line.type === "prompt" ? 260 : 420);
+              }
+            })();
+          }
+          next();
+        }
+
+        if (reduceMotion) {
+          renderStatic();
+        } else {
+          typeSequence();
+        }
+
+        /* ---------- 5. Footer year (kept dynamic for future-proofing) ---------- */
+        // Footer currently uses a static version tag (v2026.06) to match the
+        // hero badge. If you redeploy later, bump both together by hand so the
+        // "version" story stays consistent across the page.
+      })();
+    </script>
+  </body>
+</html>
